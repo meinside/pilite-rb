@@ -1,33 +1,66 @@
-1. SETUP
+## 0. Purpose
 
-a. disable serial port login
+For controlling Pi-LITE board on Raspberry Pi with Ruby or Rails.
 
-$ sudo vi /etc/inittab
+## 1. Setup
 
-# comment out the last line:
+### a. disable serial port login
+
+`$ sudo vi /etc/inittab`
+
+comment out the last line from:
+```
 T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
+```
 
-# to:
+to:
+```
 #T0:23:respawn:/sbin/getty -L ttyAMA0 115200 vt100
+```
 
-b. disable bootup info
+### b. disable bootup info
 
-$ sudo vi /boot/cmdline.txt
+`$ sudo vi /boot/cmdline.txt`
 
-# edit following line:
+edit following line:
+```
 dwc_otg.lpm_enable=0 console=ttyAMA0,115200 kgdboc=ttyAMA0,115200 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
+```
 
-# to:
+to:
+```
 dwc_otg.lpm_enable=0 console=tty1 root=/dev/mmcblk0p2 rootfstype=ext4 elevator=deadline rootwait
+```
 
-c. add user to group dialout
+### c. Add user to group dialout
 
-$ sudo usermod $USER -a -G dialout
+`$ sudo usermod $USER -a -G dialout`
 
-d. reboot
+### d. Reboot
 
-$ sudo shutdown -r now
+`$ sudo shutdown -r now`
 
-2. INSTALL
+## 2. Install pilite
 
-$ gem install pilite
+`$ gem install pilite`
+
+## 3. Run
+
+`$ pilite help`
+
+or
+
+```ruby
+require 'pilite'
+
+PiLite::Commands.start{|lite|
+  lite.all :on
+  sleep 1 
+  lite.all :off
+}
+```
+
+## 4. TODOs
+
+- add some test scripts
+
