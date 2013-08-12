@@ -1,0 +1,85 @@
+#!/usr/bin/env ruby
+# coding: UTF-8
+
+# pilite
+# 
+# excutable for pilite
+# 
+# created on : 2013.08.12
+# last update: 2013.08.12
+# 
+# by meinside@gmail.com
+
+require "thor"
+
+require "pilite"
+
+module PiLite
+  class Exec < Thor
+    desc "speed [VALUE]", "Changes scroll spped"
+    def speed(value)
+      PiLite::Commands::start{|lite|
+        lite.speed(value)
+      }
+    end
+
+    desc "fbuffer [BITS]", "Prints frame buffer with given BITS"
+    def fbuffer(bits)
+      PiLite::Commands::start{|lite|
+        lite.fbuffer(bits)
+      }
+    end
+
+    desc "bar [COLUMN] [VALUE]", "Draws a bar at given COLUMN with VALUE percentage"
+    def bar(column, value)
+      PiLite::Commands::start{|lite|
+        lite.bar(column, value)
+      }
+    end
+
+    desc "vumeter [ROW] [VALUE]", "Draws a VU meter on ROW with VALUE percentage"
+    def vumeter(row, value)
+      PiLite::Commands::start{|lite|
+        lite.vumeter(row, value)
+      }
+    end
+
+    desc "pixel [COLUMN] [ROW] [ACTION]", "Prints a pixel on (COLUMN, ROW) with ACTION(on/off/toggle)"
+    def pixel(column, row, action)
+      PiLite::Commands::start{|lite|
+        lite.pixel(column, row, action)
+      }
+    end
+
+    desc "all [ACTION]", "Turns on/off all LEDs"
+    def all(action)
+      PiLite::Commands::start{|lite|
+        lite.all(action)
+      }
+    end
+
+    desc "scroll [OFFSET]", "Scrolls to offset"
+    def scroll(offset)
+      PiLite::Commands::start{|lite|
+        lite.scroll(offset)
+      }
+    end
+
+    desc "char [COLUMN] [ROW] [CHAR]", "Prints CHAR on (COLUMN, ROW)"
+    def char(column, row, char)
+      PiLite::Commands::start{|lite|
+        lite.char(column, row, char)
+      }
+    end
+
+    desc "text [TEXT]", "Scrolls TEXT"
+    def text(str)
+      PiLite::Commands::start{|lite|
+        lite.text(str)
+      }
+    end
+  end
+end
+
+PiLite::Exec.start(ARGV)
+
