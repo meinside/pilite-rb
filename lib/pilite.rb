@@ -7,7 +7,7 @@
 # (http://shop.ciseco.co.uk/pi-lite-lots-of-leds-for-the-raspberry-pi-0805-red/)
 #
 # created on : 2013.08.09
-# last update: 2013.08.12
+# last update: 2013.08.13
 # 
 # by meinside@gmail.com
 
@@ -26,6 +26,8 @@ module PiLite
     end
 
     public
+    # @param port [String] port
+    # @param params [Hash] serial connection parameters
     def self.start(port = "/dev/ttyAMA0", params = {baudrate: 9600}, &block)
       @@pilite = PiLite::Commands.new(port, params) unless @@pilite
 
@@ -43,7 +45,7 @@ module PiLite
     end
 
     # print framebuffer
-    # @param bits [String/Array] array of 0/1s for each LED's state (0:off, 1:on, 14 x 9 total)
+    # @param bits [String,Array] array of 0/1s for each LED's state (0:off, 1:on, 14 x 9 total)
     def fbuffer(bits)
       bits = bits.join if bits.kind_of? Array
       command "F#{bits}"
