@@ -2,6 +2,9 @@
 
 For controlling Pi-LITE board on Raspberry Pi with Ruby or Rails.
 
+Pi-LITE boards can be found here:
+http://shop.ciseco.co.uk/pi-lite-lots-of-leds-for-the-raspberry-pi-0805-red/
+
 ## 1. Setup
 
 ### a. disable serial port login
