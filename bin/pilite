@@ -6,7 +6,7 @@
 # excutable for pilite
 # 
 # created on : 2013.08.12
-# last update: 2013.08.12
+# last update: 2013.08.13
 # 
 # by meinside@gmail.com
 
@@ -16,7 +16,7 @@ require "pilite"
 
 module PiLite
   class Exec < Thor
-    desc "speed [VALUE]", "Changes scroll spped"
+    desc "speed [VALUE]", "Changes scroll delay from 1ms to 1000ms (default: 80)"
     def speed(value)
       PiLite::Commands::start{|lite|
         lite.speed(value)
@@ -30,14 +30,14 @@ module PiLite
       }
     end
 
-    desc "bar [COLUMN] [VALUE]", "Draws a bar at given COLUMN with VALUE percentage"
+    desc "bar [COLUMN] [VALUE]", "Draws a bar at given COLUMN(1 ~ 14) with VALUE percentage(0 ~ 100)"
     def bar(column, value)
       PiLite::Commands::start{|lite|
         lite.bar(column, value)
       }
     end
 
-    desc "vumeter [ROW] [VALUE]", "Draws a VU meter on ROW with VALUE percentage"
+    desc "vumeter [ROW] [VALUE]", "Draws a VU meter on ROW(1 ~ 2) with VALUE percentage(1 ~ 100)"
     def vumeter(row, value)
       PiLite::Commands::start{|lite|
         lite.vumeter(row, value)
@@ -58,7 +58,7 @@ module PiLite
       }
     end
 
-    desc "scroll [OFFSET]", "Scrolls to offset"
+    desc "scroll [OFFSET]", "Scrolls to offset(-1 ~ -14: shift to right / 1 ~ 14: shift to left)"
     def scroll(offset)
       PiLite::Commands::start{|lite|
         lite.scroll(offset)

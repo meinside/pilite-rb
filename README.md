@@ -1,8 +1,10 @@
+# PiLITE-rb
+
 ## 0. Purpose
 
 For controlling Pi-LITE board on Raspberry Pi with Ruby or Rails.
 
-Pi-LITE boards can be found here:
+Pi-LITE is a 14x9 LED control board that can be found here:
 http://shop.ciseco.co.uk/pi-lite-lots-of-leds-for-the-raspberry-pi-0805-red/
 
 ## 1. Setup
