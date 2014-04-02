@@ -1,6 +1,6 @@
 # PiLITE-rb
 
-## 0. Purpose
+![Gem Version](http://img.shields.io/gem/v/pilite.svg)
 
 For controlling Pi-LITE board on Raspberry Pi with Ruby or Rails.
 
